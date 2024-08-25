@@ -2,8 +2,8 @@ package com.example.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class TokenNotFoundException extends RuntimeException implements BaseHttpException{
-    public TokenNotFoundException(String message) {
+public class SessionNotFoundException extends RuntimeException implements BaseHttpException{
+    public SessionNotFoundException(String message) {
         super(message);
     }
 

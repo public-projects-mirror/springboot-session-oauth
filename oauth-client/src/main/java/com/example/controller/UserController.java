@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.UserDTO;
 import com.example.manager.BaseAuthManager;
+import com.example.model.AddPasswordRequest;
 import com.example.response.ApiResponse;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,18 +35,23 @@ public class UserController {
         }
         if (githubLoginName == null) {
             apiResponse.setMessage("User dont have github login name");
-            apiResponse.setData("githubLoginName");
+            apiResponse.setData("oAuthLoginName");
             return apiResponse;
         }
         apiResponse.setMessage("User already exists");
-        apiResponse.setData("user");
+        apiResponse.setData("All");
         return apiResponse;
     }
 
-    @RequestMapping(value = "/addPassword", method = RequestMethod.GET)
-    public void addOauthUser(@RequestParam String sessionId, @RequestParam String password) {
+    @RequestMapping(value = "/addPassword", method = RequestMethod.POST)
+    public ApiResponse<String> addOauthUser(@RequestParam String sessionId, @RequestBody AddPasswordRequest addPasswordRequest) {
+        String password = addPasswordRequest.getPassword();
         String userId = authManager.getUserId(sessionId);
         userService.addPassword(userId, password);
+        ApiResponse<String> apiResponse = new ApiResponse<>();
+        apiResponse.setStatus(HttpStatus.OK);
+        apiResponse.setMessage("User added successfully");
+        return apiResponse;
     }
 
 }
