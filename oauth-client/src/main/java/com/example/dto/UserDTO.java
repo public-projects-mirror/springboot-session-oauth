@@ -32,7 +32,7 @@ public class UserDTO {
             userDTO.userId = userDO.getUserId();
             userDTO.username = userDO.getUsername();
             userDTO.password = userDO.getPassword();
-            userDTO.githubLoginName = userDO.getOauthLoginName();
+            userDTO.githubLoginName = userDO.getOAuthLoginName();
             return userDTO;
         };
     }

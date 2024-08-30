@@ -46,11 +46,11 @@ public class UserDO {
         this.password = password;
     }
 
-    public String getOauthLoginName() {
+    public String getOAuthLoginName() {
         return oauthLoginName;
     }
 
-    public void setOauthLoginName(String oauthLoginName) {
+    public void setOAuthLoginName(String oauthLoginName) {
         this.oauthLoginName = oauthLoginName;
     }
 }

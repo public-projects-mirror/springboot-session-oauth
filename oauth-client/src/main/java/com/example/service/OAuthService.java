@@ -77,11 +77,11 @@ public class OAuthService {
             if (state == null) { // 没有用户，只是登录
                 String userId = UUID.randomUUID().toString();
                 authManager.saveSession(accessToken, userId);
-                userService.saveOauthUser(userId, oauthLoginName, oauthLoginName);
+                userService.saveOAuthUser(userId, oauthLoginName, oauthLoginName);
                 return accessToken;
             } else { //已有用户，配置第三方登录
                 String userId = authManager.getUserId(state);
-                userService.addOauthLoginName(userId, oauthLoginName);
+                userService.addOAuthLoginName(userId, oauthLoginName);
                 return null;
             }
         } catch (IOException e) {

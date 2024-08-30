@@ -44,17 +44,17 @@ public class UserService {
         userDO.setUserId(uuid.toString());
         userDO.setUsername(userRequest.getUsername());
         userDO.setPassword(userRequest.getPassword());
-        userDO.setOauthLoginName(null);
+        userDO.setOAuthLoginName(null);
         userRepository.save(userDO);
         return UserDTO.newFromDO().apply(userDO);
     }
 
-    public void saveOauthUser(String userId, String username, String oauthLoginName) {
+    public void saveOAuthUser(String userId, String username, String oauthLoginName) {
         UserDO userDO = new UserDO();
         userDO.setUserId(userId);
         userDO.setUsername(username);
         userDO.setPassword(null);
-        userDO.setOauthLoginName(oauthLoginName);
+        userDO.setOAuthLoginName(oauthLoginName);
         userRepository.save(userDO);
     }
 
@@ -64,9 +64,9 @@ public class UserService {
         userRepository.save(userDO);
     }
 
-    public void addOauthLoginName(String userId, String oauthLoginName) {
+    public void addOAuthLoginName(String userId, String oauthLoginName) {
         UserDO userDO = userRepository.findByUserId(userId);
-        userDO.setOauthLoginName(oauthLoginName);
+        userDO.setOAuthLoginName(oauthLoginName);
         userRepository.save(userDO);
     }
 
