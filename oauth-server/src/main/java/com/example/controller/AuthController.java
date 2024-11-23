@@ -54,7 +54,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ApiResponse<String> home(@RequestParam String sessionId) {
+        public ApiResponse<String> home(@RequestParam String sessionId) {
         String userId = authManager.getUserId(sessionId);
         UserDTO userDTO = userService.findUserByUserId(userId);
         String username = userDTO.getUsername();
